@@ -34,6 +34,7 @@ packages/
 # Ignore all appsettings JSON files
 **/appsettings*.json
 
-# ignore sqlite db
-dating.db
-
+# ignore all sqlite db and related files
+**/*.db
+**/*.db-shm
+**/*.db-wal
