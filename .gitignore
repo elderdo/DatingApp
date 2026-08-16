@@ -35,5 +35,5 @@ packages/
 **/appsettings*.json
 
 # ignore sqlite db
-API/dating.db
+dating.db
 
