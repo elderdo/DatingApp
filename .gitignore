@@ -38,3 +38,12 @@ packages/
 **/*.db
 **/*.db-shm
 **/*.db-wal
+
+# Angular client paths
+**/client/dist/
+**/client/.angular/
+**/client/node_modules/
+
+# Local environment secrets
+**/client/src/environments/environment.development.ts
+**/client/src/environments/environment.ts
