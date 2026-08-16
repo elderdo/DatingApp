@@ -31,4 +31,5 @@ _ReSharper*/
 packages/
 
 # appsettings
-**/appsettings.*.*
+# Ignore all appsettings JSON files
+**/appsettings*.json
