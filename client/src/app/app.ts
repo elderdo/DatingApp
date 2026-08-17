@@ -1,12 +1,27 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('client');
+export class App implements OnInit {
+  // perform dependency inject of the HttpClient
+  private http = inject(HttpClient);
+
+  protected readonly title = signal('Dating apps');
+  protected members = signal<any[]>([]); // turned off strong typing temporarily
+
+  // required by interface OnInit
+  ngOnInit(): void {
+    // Send a GET request to the DatingApp's endpoint:
+    this.http.get('https://localhost:5001/api/members').subscribe({
+      next: (response) => this.members.set(response),
+      error: (error) => console.log(error),
+      complete: () => console.log('Completed the http request'),
+      // when complete is finished, then we're unsubscribed from the response
+    });
+  }
 }
