@@ -17,6 +17,8 @@ var app = builder.Build();
 app.UseCors(options => options.AllowAnyHeader()
   .AllowAnyMethod()
   .WithOrigins("http://localhost:4200","https://localhost:4200"));
+app.UseDefaultFiles();
+app.UseStaticFiles(); // this serves index.html from wwwroot
 app.MapControllers();
 
 app.Run();
