@@ -2,7 +2,7 @@
 namespace API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]")] // localhost:5001/api/members 
 public class MembersController(AppDbContext context) : ControllerBase
 {
 
