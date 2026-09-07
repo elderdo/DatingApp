@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
     options.Theme = ScalarTheme.Moon;
     // Sets the default code-snippet Language in the UI panel
     options.DefaultHttpClient = new(ScalarTarget.CSharp, ScalarClient.HttpClient);
-  });
+   });
 }
 
 // allow for the use of wwwroot and its index.html  
