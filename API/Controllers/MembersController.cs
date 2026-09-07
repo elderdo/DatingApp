@@ -1,9 +1,7 @@
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")] // localhost:5001/api/members 
-public class MembersController(AppDbContext context) : ControllerBase
+public class MembersController(AppDbContext context) : BaseApiController
 {
 
   [HttpGet]
