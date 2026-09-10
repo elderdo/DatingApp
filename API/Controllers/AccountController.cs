@@ -1,12 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using API.DTOs;
-using API.Interfaces;
-
 namespace API.Controllers;
 
 public class AccountController(AppDbContext context, ITokenService tokenService) : BaseApiController
