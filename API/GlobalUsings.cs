@@ -1,6 +1,7 @@
 global using API.Data;
 global using API.DTOs;
 global using API.Entities;
+global using API.Extensions;
 global using API.Interfaces;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Authorization;
