@@ -1,6 +1,10 @@
-<header class="p-3 w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-black">
-  <div class="flex align-middle items-center px-10 mx-auto gap-6">
-    <a class="flex items-center gap-3 max-h-16 text-white border-r-white border-r-2 pr-6">
+<header class="sticky top-0 z-50 w-full bg-gradient-to-r from-primary to-black p-3">
+  <div
+    class="mx-auto flex flex-col items-stretch gap-3 px-4 md:flex-row md:items-center md:gap-6 md:px-10"
+  >
+    <a
+      class="flex items-center gap-3 border-b-2 border-r-0 border-white pb-3 text-white md:max-h-16 md:border-b-0 md:border-r-2 md:pb-0 md:pr-6"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -13,12 +17,12 @@
       </svg>
       <h3 class="text-2xl font-semibold text-white uppercase whitespace-nowrap">Dating app</h3>
     </a>
-    <nav class="flex gap-3 uppercase text-lg text-white">
+    <nav class="flex flex-wrap gap-3 text-lg uppercase text-white">
       <a>Matches</a>
       <a>Lists</a>
       <a>Messages</a>
     </nav>
-    <div class="flex items-center ml-auto gap-3">
+    <div class="flex w-full items-center gap-3 md:ml-auto md:w-auto">
       @if (loggedIn()) {
         <div class="dropdown">
           <div tabindex="0" role="button" class="btn m-1">Click</div>
@@ -31,7 +35,11 @@
           </ul>
         </div>
       } @else {
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="flex items-center gap-3">
+        <form
+          #loginForm="ngForm"
+          (ngSubmit)="login()"
+          class="flex w-full flex-col gap-3 sm:flex-row sm:items-center md:w-auto"
+        >
           <input
             [(ngModel)]="creds.email"
             name="email"
