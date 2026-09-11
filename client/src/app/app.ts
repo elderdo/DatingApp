@@ -12,7 +12,7 @@ export class App implements OnInit {
   // perform dependency inject of the HttpClient
   private http = inject(HttpClient);
 
-  protected readonly title = signal('Dating apps');
+  protected readonly title = signal('Dating app');
   protected members = signal<any[]>([]); // turned off strong typing temporarily
 
   // required by interface OnInit
