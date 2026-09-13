@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import type { User, RegisterCreds } from '../../../types/user';
 import { FormsModule } from '@angular/forms';
-import { RegisterCreds } from '../../../types/user';
 
 // created with ng g c features/account/register
 
@@ -11,6 +11,7 @@ import { RegisterCreds } from '../../../types/user';
   styleUrl: './register.css',
 })
 export class Register {
+  membersFromHome = input.required<User[]>();
   protected creds = {} as RegisterCreds;
 
   register() {

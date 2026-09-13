@@ -4,6 +4,7 @@ import { Nav } from '../layout/nav/nav';
 import { Home } from '../features/home/home';
 import { AccountService } from '../core/services/account-service';
 import { lastValueFrom } from 'rxjs';
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class App implements OnInit {
   private http = inject(HttpClient);
 
   protected readonly title = signal('Dating app');
-  protected members = signal<any>([]); // turned off strong typing temporarily
+  protected members = signal<User[]>([]); // turned off strong typing temporarily
 
   // required by interface OnInit
   async ngOnInit() {
@@ -35,7 +36,7 @@ export class App implements OnInit {
 
   async getMembers() {
     try {
-      return lastValueFrom(this.http.get('https://localhost:5001/api/members'));
+      return lastValueFrom(this.http.get<User[]>('https://localhost:5001/api/members'));
     } catch (error) {
       console.log(error);
       throw error;
