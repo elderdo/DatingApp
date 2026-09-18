@@ -11,7 +11,6 @@ import { User } from '../../types/user';
   styleUrl: './home.css',
 })
 export class Home {
-  membersFromApp = input.required<User[]>();
   protected registerMode = signal(false);
   protected accountService = inject(AccountService);
 
