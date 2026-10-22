@@ -1,6 +1,15 @@
 <div class="flex h-screen flex-col overflow-hidden">
   <app-nav />
-  <div class="flex flex-1 min-h-0 mt-24 container mx-auto items-center justify-center">
+  <div
+    [class.flex]="router.url !== '/'"
+    [class.flex-1]="router.url !== '/'"
+    [class.min-h-0]="router.url !== '/'"
+    [class.items-center]="router.url !== '/'"
+    [class.justify-center]="router.url !== '/'"
+    [class.mt-24]="router.url !== '/'"
+    [class.container]="router.url !== '/'"
+    [class.mx-auto]="router.url !== '/'"
+  >
     <router-outlet />
   </div>
 </div>

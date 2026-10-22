@@ -11,5 +11,5 @@ export const routes: Routes = [
   { path: 'members/:id', component: MemberDetailed },
   { path: 'lists', component: Lists },
   { path: 'messages', component: Messages },
-  { path: '**', component: Home },
+  { path: '**', component: Home }, // < default
 ];
