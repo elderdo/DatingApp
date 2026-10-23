@@ -23,9 +23,11 @@
       </a>
     </div>
     <nav class="flex flex-wrap gap-3 text-lg uppercase text-white">
-      <a routerLink="/members" routerLinkActive="text-accent">Matches</a>
-      <a routerLink="/lists" routerLinkActive="text-accent">Lists</a>
-      <a routerLink="/messages" routerLinkActive="text-accent">Messages</a>
+      @if (accountService.currentUser()) {
+        <a routerLink="/members" routerLinkActive="text-accent">Matches</a>
+        <a routerLink="/lists" routerLinkActive="text-accent">Lists</a>
+        <a routerLink="/messages" routerLinkActive="text-accent">Messages</a>
+      }
     </nav>
     <div class="flex w-full items-center gap-3 md:ml-auto md:w-auto">
       @if (accountService.currentUser(); as user) {
