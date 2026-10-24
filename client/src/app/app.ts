@@ -1,9 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Nav } from '../layout/nav/nav';
-import { AccountService } from '../core/services/account-service';
-import { lastValueFrom } from 'rxjs';
-import { User } from '../types/user';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -12,35 +8,6 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
-  private accountService = inject(AccountService);
+export class App {
   protected router = inject(Router);
-  // perform dependency inject of the HttpClient
-  private http = inject(HttpClient);
-
-  protected readonly title = signal('Dating app');
-  protected members = signal<User[]>([]); // turned off strong typing temporarily
-
-  // required by interface OnInit
-  async ngOnInit() {
-    this.members.set(await this.getMembers());
-    this.setCurrentUser();
-  }
-
-  setCurrentUser() {
-    const userString = localStorage.getItem('user');
-    if (!userString) return;
-    const user = JSON.parse(userString);
-    this.accountService.currentUser.set(user);
-    this.setCurrentUser();
-  }
-
-  async getMembers() {
-    try {
-      return lastValueFrom(this.http.get<User[]>('https://localhost:5001/api/members'));
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
 }
