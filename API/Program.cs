@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Add native OpenApi generation (replaces AddSwaggerGen)
-builder.Services.AddOpenApi(); 
+builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
@@ -19,7 +19,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options =>
   {
-    var tokenKey = builder.Configuration["TokenKey"] 
+    var tokenKey = builder.Configuration["TokenKey"]
       ?? throw new Exception("Token key not found - Program.cs");
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -33,9 +33,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline. 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(options => options.AllowAnyHeader()
   .AllowAnyMethod()
-  .WithOrigins("http://localhost:4200","https://localhost:4200"));
+  .WithOrigins("http://localhost:4200", "https://localhost:4200"));
 app.UseAuthentication(); // Order and the location of this is 'important'
 app.UseAuthorization();  // must follow Authentication and be located here in Program.cs
 
@@ -51,7 +52,7 @@ if (app.Environment.IsDevelopment())
     options.Theme = ScalarTheme.Moon;
     // Sets the default code-snippet Language in the UI panel
     options.DefaultHttpClient = new(ScalarTarget.CSharp, ScalarClient.HttpClient);
-   });
+  });
 }
 
 // allow for the use of wwwroot and its index.html  
