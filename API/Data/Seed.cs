@@ -8,7 +8,7 @@ public class Seed
     if (await context.Users.AnyAsync()) return;
 
     // Read the sample users from the JSON file and turn the JSON into C# objects.
-    var memberData = await File.ReadAllTextAsync("Data/UsersSeedData.json");
+    var memberData = await File.ReadAllTextAsync("Data/UserSeedData.json");
     var members = JsonSerializer.Deserialize<List<SeedUserDto>>(memberData);
 
     // Stop if deserialization produced no list of members.
@@ -18,12 +18,13 @@ public class Seed
       return;
     }
 
-    // Create a hashing tool to safely store a hash of the shared sample password,
-    // rather than storing the plain-text password in the database.
-    using var hmac = new HMACSHA512();
 
     foreach (var member in members)
     {
+      // Create a hashing tool to safely store a hash of the shared sample password,
+      // rather than storing the plain-text password in the database.
+      using var hmac = new HMACSHA512();
+
       // Build a user record and its related member profile from one seed-data entry.
       var user = new AppUser
       {

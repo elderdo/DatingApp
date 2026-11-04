@@ -38,6 +38,7 @@ packages/
 **/*.db
 **/*.db-shm
 **/*.db-wal
+**/*.db-x*
 
 # Angular client paths
 **/client/dist/
