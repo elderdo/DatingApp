@@ -62,4 +62,19 @@ app.UseStaticFiles(); // this serves index.html from wwwroot
 // Scan all the Controllers and use their WebApi
 app.MapControllers();
 
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+  var context = services.GetRequiredService<AppDbContext>();
+  await context.Database.MigrateAsync();
+  await Seed.SeedUsers(context);
+}
+catch (System.Exception ex)
+{
+  var logger = services.GetRequiredService<ILogger<Program>>();
+  logger.LogError(ex, "An error occurred during migration");
+}
+
+
 app.Run();
